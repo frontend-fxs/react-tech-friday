@@ -1,0 +1,19 @@
+.paragraph,
+.button {
+  display: block;
+  font-size: 2rem;
+
+}
+.paragraph {
+  width: 100%;
+  padding: 10px 0;
+}
+.button{
+    margin:1rem;
+}
+.link{
+    padding-right:10px;
+    color:white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
