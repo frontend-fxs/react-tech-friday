@@ -82,7 +82,7 @@ class ClassComponent extends React.Component {
           className='button'
           onClick={() =>
             this.setState({
-              update: this.state.updated + 1,
+              updated: this.state.updated + 1,
               rendered: this.state.rendered + 1,
             })
           }
