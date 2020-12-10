@@ -48,12 +48,11 @@ function Home() {
 
 class ClassComponent extends React.Component {
   
-
   constructor(props) {
     super(props);
     this.state = {
       rendered: 0,
-      update: 0      
+      updated: 0      
     };
   }
 
@@ -64,12 +63,12 @@ class ClassComponent extends React.Component {
   componentDidUpdate() {
     //No se debe actualizar el estado dentro del componentDidUpdate porque causaría un bucle infinito
     setTimeout(() => {
-      document.title = `${this.state.update} updates`;
+      document.title = `${this.state.updated} updates`;
     }, 2000);
   }
 
   componentWillUnmount() {
-    console.log("Bye bye. Destroying external objects here.");
+    console.log("Bye bye. Destroying external objects, unsubscribing ... here.");
   }
 
   render() {
@@ -78,10 +77,10 @@ class ClassComponent extends React.Component {
         <Typography variant="h2" >Class Component</Typography>
 
         <Typography variant="p">{this.state.rendered} Renders</Typography>
-        <Typography variant="p">{this.state.update} Updates</Typography>
+        <Typography variant="p">{this.state.updated} Updates</Typography>
         <Button
-
           color="primary"
+          className='button'
           onClick={() =>
             this.setState({
               update: this.state.update + 1,
@@ -96,15 +95,21 @@ class ClassComponent extends React.Component {
   }
 }
 
-function FunctionalComponent() {
+function FunctionalComponent(props) {
 
   const [rendered, setRendered] = useState(1);
   const [updated, setUpdated] = useState(0);
 
   useEffect(() => {
+
     setTimeout(() => {
-      document.title = `${updated} times updated`;
+      document.title = `${updated} updates`;
     }, 2000);
+
+    return function cleanup() {
+      console.log("Bye bye. Destroying external objects, unsubscribing... here.");
+    };
+
   });
 
   return (
