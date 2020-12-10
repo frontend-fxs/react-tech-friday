@@ -75,15 +75,14 @@ class ClassComponent extends React.Component {
     return (
       <div>
         <Typography variant="h2" >Class Component</Typography>
-
-        <Typography variant="p">{this.state.rendered} Renders</Typography>
-        <Typography variant="p">{this.state.updated} Updates</Typography>
+        <Typography variant="p" className='paragraph'>{this.state.rendered} Renders</Typography>
+        <Typography variant="p" className='paragraph'>{this.state.updated} Updates</Typography>
         <Button
           color="primary"
           className='button'
           onClick={() =>
             this.setState({
-              update: this.state.update + 1,
+              update: this.state.updated + 1,
               rendered: this.state.rendered + 1,
             })
           }
